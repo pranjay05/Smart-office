@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "pranjay",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -9.6, "left": -14.36, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -70.8, "left": 263, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": -70.8, "left": 215, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led3", "top": -70.8, "left": 167, "attrs": { "color": "red" } },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 259.4, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -102.4,
+      "left": -258.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 42.35,
+      "left": 259.2,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 42.35,
+      "left": 153.6,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 42.35,
+      "left": 211.2,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:VCC", "esp:5V", "red", [ "h38.4", "v0" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h28.8", "v201.2" ] ],
+    [ "ldr1:AO", "esp:34", "green", [ "h9.6", "v66.5" ] ],
+    [ "relay1:VCC", "esp:3V3", "red", [ "h-115.2", "v-259.2" ] ],
+    [ "esp:GND.1", "relay1:GND", "black", [ "h-95.85", "v144", "h19.2" ] ],
+    [ "esp:23", "relay1:IN", "green", [ "h67.2", "v307.2", "h-211.2", "v-38.4" ] ],
+    [ "led3:C", "esp:GND.1", "black", [ "v28.8", "h-9.2", "v220.8", "h-240", "v-76.8" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v259.2", "h-306.8", "v-86.4" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v268.8", "h-364.4", "v-96" ] ],
+    [ "led3:A", "r2:1", "gold", [ "v0" ] ],
+    [ "led2:A", "r3:1", "gold", [ "v0" ] ],
+    [ "led1:A", "r1:1", "gold", [ "v0" ] ],
+    [ "r1:2", "esp:18", "gold", [ "h-0.55", "v-0.35", "h0", "v28.8" ] ],
+    [ "r3:2", "esp:19", "gold", [ "h-0.55", "v9.25" ] ],
+    [ "r2:2", "esp:21", "gold", [ "h-77.35", "v-9.95" ] ]
+  ],
+  "dependencies": {}
+}
